@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SQLiLab — Dashboard</title>
+    <style>
+        body {
+            background-color: #050b14;
+            color: #e2e8f0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 40px;
+            background-image: linear-gradient(rgba(15, 23, 42, 0.8) 1px, transparent 1px), linear-gradient(90deg, rgba(15, 23, 42, 0.8) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #1e293b;
+            padding-bottom: 20px;
+            margin-bottom: 40px;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #ffffff;
+        }
+        .logo span {
+            color: #00d2ff;
+        }
+        h2 {
+            font-size: 28px;
+            margin: 0 0 10px 0;
+            color: #ffffff;
+        }
+        .subtitle {
+            color: #94a3b8;
+            margin-bottom: 40px;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 24px;
+        }
+        .card {
+            background: #0b132b;
+            border: 1px solid #1c2541;
+            border-radius: 12px;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        .card:hover {
+            transform: translateY(-4px);
+            border-color: #00d2ff;
+        }
+        .tag {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 11px;
+            font-weight: bold;
+            text-transform: uppercase;
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+        .tag.easy { background: rgba(16, 185, 129, 0.2); color: #10b981; }
+        .tag.medium { background: rgba(245, 158, 11, 0.2); color: #f59e0b; }
+        .tag.hard { background: rgba(239, 68, 68, 0.2); color: #ef4444; }
+        .card-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #ffffff;
+            margin: 15px 0 10px 0;
+        }
+        .card-desc {
+            font-size: 14px;
+            color: #94a3b8;
+            line-height: 1.5;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+        .btn {
+            background: #00b4d8;
+            color: #050b14;
+            text-decoration: none;
+            text-align: center;
+            padding: 10px;
+            border-radius: 6px;
+            font-weight: bold;
+            font-size: 14px;
+            transition: background 0.2s;
+        }
+        .btn:hover {
+            background: #00ffff;
+            box-shadow: 0 0 12px rgba(0, 255, 255, 0.4);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div class="logo">SQLi<span>Lab</span></div>
+        <div style="color: #94a3b8; font-size: 14px;">Authorized Local Training Environment Context</div>
+    </div>
+
+    <h2>Practice SQL Injections Safely</h2>
+    <div class="subtitle">Select a target endpoint environment module to launch vulnerability evaluations:</div>
+
+    <div class="grid">
+        <div class="card">
+            <span class="tag easy">Easy</span>
+            <div class="card-title">Practice: Hidden Data Filter Bypass</div>
+            <div class="card-desc">Modify query processing limits via logic parameter injection to expose unreleased warehouse rows.</div>
+            <a href="/lab1?category=Tech" class="btn">Open Lab</a>
+        </div>
+
+        <div class="card">
+            <span class="tag easy">Easy</span>
+            <div class="card-title">Practice: Auth Bypass Login</div>
+            <div class="card-desc">Force database criteria verification bypasses inside backend queries without matching verification credentials.</div>
+            <a href="/lab2" class="btn">Open Lab</a>
+        </div>
+
+        <div class="card">
+            <span class="tag easy">Easy</span>
+            <div class="card-title">Practice: Column Count Discovery</div>
+            <div class="card-desc">Enumerate hidden source array sizes using structural response testing queries.</div>
+            <a href="/lab3?search=Laptop" class="btn">Open Lab</a>
+        </div>
+
+        <div class="card">
+            <span class="tag easy">Easy</span>
+            <div class="card-title">Practice: Type Vector Mapping</div>
+            <div class="card-desc">Identify precise structural column sinks configured to accept string entries.</div>
+            <a href="/lab4?search=Laptop" class="btn">Open Lab</a>
+        </div>
+
+        <div class="card">
+            <span class="tag medium">Medium</span>
+            <div class="card-title">Practice: Cross-Table Extraction</div>
+            <div class="card-desc">Pivot running database boundaries to retrieve high-value credential tables from secondary schemas.</div>
+            <a href="/lab5?search=Laptop" class="btn">Open Lab</a>
+        </div>
+
+        <div class="card">
+            <span class="tag medium">Medium</span>
+            <div class="card-title">Practice: String Concatenation Sinks</div>
+            <div class="card-desc">Merge compound schema data fields through isolated display columns using operator strings.</div>
+            <a href="/lab6?search=Laptop" class="btn">Open Lab</a>
+        </div>
+
+        <div class="card">
+            <span class="tag medium">Medium</span>
+            <div class="card-title">Practice: Engine Fingerprinting</div>
+            <div class="card-desc">Extract internal deployment tracking details and platform compilation version labels.</div>
+            <a href="/lab7?search=Laptop" class="btn">Open Lab</a>
+        </div>
+
+        <div class="card">
+            <span class="tag hard">Hard</span>
+            <div class="card-title">Practice: Master Schema Mapping</div>
+            <div class="card-desc">Query target platform management maps to chart every data table structure outline.</div>
+            <a href="/lab8?search=Laptop" class="btn">Open Lab</a>
+        </div>
+    </div>
+
+</body>
+</html>

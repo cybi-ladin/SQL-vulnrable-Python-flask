@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SQLiLab — Target Instance Workspace</title>
+    <style>
+        body {
+            background-color: #050b14;
+            color: #e2e8f0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 40px;
+            background-image: linear-gradient(rgba(15, 23, 42, 0.8) 1px, transparent 1px), linear-gradient(90deg, rgba(15, 23, 42, 0.8) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        .nav-back {
+            text-decoration: none;
+            color: #00d2ff;
+            font-weight: bold;
+            font-size: 14px;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+        .nav-back:hover { color: #00ffff; }
+        h3 { color: #ffffff; margin: 0 0 10px 0; font-size: 24px; }
+        .objective-box {
+            background: rgba(0, 180, 216, 0.1);
+            border-left: 4px solid #00b4d8;
+            padding: 15px;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+        .query-title {
+            font-size: 12px;
+            text-transform: uppercase;
+            color: #94a3b8;
+            font-weight: bold;
+            margin-bottom: 6px;
+        }
+        .query-box {
+            background: #010409;
+            color: #39ff14;
+            padding: 16px;
+            font-family: 'Courier New', Courier, monospace;
+            border-radius: 8px;
+            border: 1px solid #21262d;
+            margin-bottom: 30px;
+            word-break: break-all;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.8);
+        }
+        form {
+            background: #0b132b;
+            border: 1px solid #1c2541;
+            padding: 30px;
+            border-radius: 12px;
+            max-width: 400px;
+        }
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            background: #050b14;
+            border: 1px solid #1c2541;
+            border-radius: 6px;
+            color: white;
+            box-sizing: border-box;
+            margin-top: 6px;
+            margin-bottom: 20px;
+        }
+        input[type="text"]:focus, input[type="password"]:focus {
+            border-color: #00d2ff;
+            outline: none;
+        }
+        input[type="submit"] {
+            background: #10b981;
+            color: #050b14;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+        }
+        input[type="submit"]:hover { background: #34d399; }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #0b132b;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #1c2541;
+        }
+        th, td { padding: 12px 16px; text-align: left; font-size: 14px; }
+        th { background: #1c2541; color: #ffffff; font-weight: 600; }
+        tr { border-bottom: 1px solid #161b22; }
+        tr:last-child { border: none; }
+        .status-msg { margin-top: 20px; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <a href="/" class="nav-back">← Back to Dashboard Overview</a>
+    
+    <h3>{{ lab_title }}</h3>
+    <div class="objective-box">
+        <strong>Mission Objective:</strong> {{ lab_objective }}
+    </div>
+    
+    <div class="query-title">Intercepted Database Transaction Query Sequence</div>
+    <div class="query-box">mysql_backend_query_stream >> {{ query }}</div>
+    
+    {% if show_login_form %}
+    <form method="POST">
+        <label>Username Parameter Input:</label>
+        <input type="text" name="username">
+        <label>Password Parameter Input:</label>
+        <input type="password" name="password">
+        <input type="submit" value="Transmit Authentication Payload">
+    </form>
+    <div class="status-msg">{{ login_message }}</div>
+    {% else %}
+    <table>
+        <thead>
+            <tr>
+                <th>Reflected Sink Array: Field index [0]</th>
+                <th>Reflected Sink Array: Field index [1]</th>
+                <th>Reflected Sink Array: Field index [2]</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in results %}
+            <tr>
+                <td>{{ row[0] }}</td>
+                <td>{{ row[1] }}</td>
+                <td>{{ row[2] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <div class="status-msg" style="color: #ef4444;">{{ login_message }}</div>
+    {% endif %}
+
+</body>
+</html>
